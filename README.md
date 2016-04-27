@@ -46,7 +46,8 @@ User Management
 The application include some user management actually we can create and delete a user all the user management will be at this addresse localhost:8443/users/SOMETHING
 (SOMETHING will be replace with your action, it will be explain just below).
 
-*Create User*
+**Create User**
+
 To create an user you show use a http request post at the address localhost:8443/users/create with user information in the body (it will be in JSON)
 
 I.E: I want to create a user with the username: User1, email: User1@user.com, password: User
@@ -65,7 +66,7 @@ To know if it works i will send something like this "Success : user created" or 
 
 Maybe in the feature i will update this response to something better and do it in the JSON format.
 
-*Delete User*
+**Delete User**
 
 To delete an user you need to send a http DELETE request at this address localhost:8443/users/delete/{username} (replace {username} by the user username)
 
