@@ -25,7 +25,9 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @JsonIgnore
+    @Column(nullable = false)
+    private String username;
+
     @Column(nullable = false)
     private String password;
 
@@ -53,6 +55,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public  void setUsername(String username){
+        this.username = username;
     }
 
     public String getPassword() {

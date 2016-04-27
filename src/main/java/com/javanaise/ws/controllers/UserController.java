@@ -2,38 +2,38 @@ package com.javanaise.ws.controllers;
 
 import com.javanaise.ws.models.User;
 import com.javanaise.ws.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
  * Created by ro22e0 on 26/04/2016.
  */
 
-@RestController
-@RequestMapping(value = "/user")
+@Controller
 public class UserController {
 
+    @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public User sayHello() {
-        User user = new User("Ronaël", "Bajazet", "ronael.bajazet@epitech.eu", "blablabla");
-
-        // this.userRepository.save(new User("Ronaël", "Bajazet", "ronael.bajazet@epitech.eu", "blablabla"));
-        return user;
-    }
-
-//    @RequestMapping(value = "/sign_up", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public User getUser(@PathVariable Long userId) {
-        this.userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
-        return this.userRepository.findOne(userId);
+    //@RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @RequestMapping("/hello")
+    @ResponseBody
+    public User get(String email){
+        //User user = new User("Ronaël", "Bajazet", "ronael.bajazet@epitech.eu", "blablabla");
+        try {
+            User user = userRepository.findByEmail(email);
+            return user;
+        }
+        catch (Exception e) {
+            return null;
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -49,6 +49,38 @@ public class UserController {
         });
         return resultList;
     }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @RequestMapping(value = "/users/create", method = RequestMethod.POST)
+    @ResponseBody
+    public String create(@RequestBody User user){
+        try {
+            if (userRepository.findByEmail(user.getEmail()) == null) {
+                userRepository.save(user);
+                return "Success : user created";
+            }
+            return "Failed : cannot create user";
+        }
+        catch (Exception e){
+            return "Failed: some fields may be empty : mandatory field : email, password, username";
+        }
+
+    }
+
+    @RequestMapping(value = "/users/delete/{username}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public String delete(@PathVariable String username){
+        User user = userRepository.findByUsername(username);
+        if (user != null){
+            userRepository.delete(user.getId());
+            return "Sucess: user deleted";
+        }
+        return "Failed : " + username + " not found";
+    }
+
 }
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
