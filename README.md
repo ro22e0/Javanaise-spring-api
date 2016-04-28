@@ -50,7 +50,7 @@ The application include some user management actually we can create and delete a
 
 **Create User**
 
-To create an user you show use a http request post at the address localhost:8443/users/create with user information in the body (it will be in JSON)
+To create an user you show use a http request post at the address `localhost:8443/webapi/users/create` with user information in the body (it will be in JSON)
 
 I.E: I want to create a user with the username: User1, email: User1@user.com, password: User
 
@@ -72,16 +72,16 @@ Maybe in the feature i will update this response to something better and do it i
 
 **Delete User**
 
-To delete an user you need to send a http DELETE request at this address localhost:8443/users/delete/{username} (replace {username} by the user username)
+To delete an user you need to send a http DELETE request at this address `localhost:8443/webapi/users/delete/{username}` (replace {username} by the user username)
 
 I.E : I want to delete the user i previously create (User1)
 
-I will send a http DELETE request at this address localhost:8443/users/delete/User1
+I will send a http DELETE request at this address `localhost:8443/webapi/users/delete/User1`
 
 You should have a response like this "Failed: {user} not found" or "Success: User deleted"
 
 **Get all users**
 
-To get all the register users you can send a http GET request to this address `localhost:8443/users/`.
+To get all the register users you can send a http GET request to this address `localhost:8443/webapi/users/`.
 
  Actually you will get all the user email separated by a ';'
