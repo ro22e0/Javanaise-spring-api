@@ -22,39 +22,22 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    //@RequestMapping(value = "/hello", method = RequestMethod.GET)
     @RequestMapping("/hello")
     @ResponseBody
     public User get(String email){
-        //User user = new User("Ronaël", "Bajazet", "ronael.bajazet@epitech.eu", "blablabla");
         try {
-            User user = userRepository.findByEmail(email);
-            return user;
+            return userRepository.findByEmail(email);
         }
         catch (Exception e) {
             return null;
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<User> findAll() {
-        final List<User> resultList = new ArrayList<>();
-        final Iterable<User> all = this.userRepository.findAll();
-
-        all.forEach(new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-                resultList.add(user);
-            }
-        });
-        return resultList;
-    }
-
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "/users/create", method = RequestMethod.POST)
+    @RequestMapping(value = "webapi/users/create", method = RequestMethod.POST)
     @ResponseBody
     public String create(@RequestBody User user){
         try {
@@ -69,14 +52,28 @@ public class UserController {
         }
 
     }
+    
+    @RequestMapping(value = "webapi/users", method = RequestMethod.GET)
+    @ResponseBody
+    public String getUsers(){
+        /*
+            Method to get all the users. Need to convert it to JSON format
+         */
+        List<User> users = userRepository.findAll();
+        String output = "";
+        for (final User user: users) {
+            output += user.getEmail() + ";";
+        }
+        return output;
+    }
 
-    @RequestMapping(value = "/users/delete/{username}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "webapi/users/delete/{username}", method = RequestMethod.DELETE)
     @ResponseBody
     public String delete(@PathVariable String username){
         User user = userRepository.findByUsername(username);
         if (user != null){
             userRepository.delete(user.getId());
-            return "Sucess: user deleted";
+            return "Success: user deleted";
         }
         return "Failed : " + username + " not found";
     }
