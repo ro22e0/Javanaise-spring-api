@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ac25b3b8-f570-4d76-a29c-4283f23f8c71" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="ServerRSS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1117,7 +1116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1461833337189</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add RSS DB.">
+      <created>1461833503953</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1461833503953</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
