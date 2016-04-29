@@ -1,6 +1,5 @@
 package com.javanaise.ws.controllers;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.javanaise.ws.models.User;
 import com.javanaise.ws.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import java.util.function.Consumer;
  */
 
 @RestController
-@RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
@@ -46,6 +45,29 @@ public class UserController {
                 new ResponseEntity<String>("{\"status\": \"ahahah t'as cru que c'était possible\"}", HttpStatus.BAD_REQUEST);
 
         return errorResponseEntity;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody Map<String, String> params) {
+        Optional<User> user = this.userRepository.findById(Long.getLong(params.get("id")));
+        if (!user.isPresent()) {
+            ResponseEntity<String> errorResponseEntity =
+                    new ResponseEntity<String>("{\"error\": \"could not find user\"}", HttpStatus.NOT_FOUND);
+            return errorResponseEntity;
+        }
+        if (params.get("email") != "") {
+            user.get().setEmail(params.get("email"));
+        }
+        if (params.get("password") != "") {
+            user.get().setEmail(params.get("password"));
+        }
+        if (params.get("firstname") != "") {
+            user.get().setEmail(params.get("firstname"));
+        }
+        if (params.get("lastname") != "") {
+            user.get().setEmail(params.get("lastname"));
+        }
+        return new ResponseEntity<User>(userRepository.save(user.get()), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
