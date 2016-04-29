@@ -18,12 +18,12 @@ public class ApiController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> infos() {
         ResponseEntity<String> errorResponseEntity =
-                new ResponseEntity<String>("Mapped \"[/users/sign_up], methods=[POST], produces=[application/json, value=[email, password]\"\n" +
-                        "Mapped \"[/users/sign_in], methods=[POST], produces=[application/json], value=[email, password]\"\n" +
+                new ResponseEntity<String>("Mapped \"[/users/sign_up], methods=[POST], produces=[application/json, body_param=[email, password]\"\n" +
+                        "Mapped \"[/users/sign_in], methods=[POST], produces=[application/json], body_param=[email, password]\"\n" +
                         "Mapped \"[/users/{userId}], methods=[GET], produces=[application/json]\"\n" +
                         "Mapped \"[/users],methods=[GET], produces=[application/json]\"\n" +
-                        "Mapped \"[/users],methods=[PUT], produces=[application/json], value=[firstname, lastname, email, password]\"\n" +
-                        "Mapped \"[/feeds/create], methods=[POST], produces=[application/json], value=[url]\"", HttpStatus.OK);
+                        "Mapped \"[/users],methods=[PUT], produces=[application/json], body_param=[firstname, lastname, email, password]\"\n" +
+                        "Mapped \"[/feeds/create], methods=[POST], produces=[application/json], body_param=[url]\"", HttpStatus.OK);
         return errorResponseEntity;
     }
 }

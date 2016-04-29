@@ -26,6 +26,11 @@ repositories {
 	mavenCentral()
 }
 
+apply plugin: 'spring-boot'
+
+springBoot {
+	executable = true
+}
 
 dependencies {
 //	compile(fileTree(dir: 'libs', include: ['*.jar']))
