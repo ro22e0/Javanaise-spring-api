@@ -1,13 +1,18 @@
 package com.javanaise.ws.controllers;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.javanaise.ws.models.User;
 import com.javanaise.ws.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -18,22 +23,41 @@ import java.util.function.Consumer;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public User sayHello() {
-        User user = new User("Ronaël", "Bajazet", "ronael.bajazet@epitech.eu", "blablabla");
+    @RequestMapping(value = "/sign_up", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> signUp(@RequestBody Map<String, String> params) {
+        Optional<User> oUser = this.userRepository.findByEmail(params.get("email"));
+        if (!oUser.isPresent()) {
+            User user = new User(params.get("email"), params.get("password"));
+            return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
+        }
 
-        // this.userRepository.save(new User("Ronaël", "Bajazet", "ronael.bajazet@epitech.eu", "blablabla"));
-        return user;
+        ResponseEntity<String> errorResponseEntity =
+                new ResponseEntity<String>("{\"error\": \"user already exist\"}", HttpStatus.BAD_REQUEST);
+
+        return errorResponseEntity;
     }
 
-//    @RequestMapping(value = "/sign_up", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/sign_in", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> signIn(@RequestBody Map<String, String> params) {
+        ResponseEntity<String> errorResponseEntity =
+                new ResponseEntity<String>("{\"status\": \"ahahah t'as cru que c'était possible\"}", HttpStatus.BAD_REQUEST);
+
+        return errorResponseEntity;
+    }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public User getUser(@PathVariable Long userId) {
-        this.userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
-        return this.userRepository.findOne(userId);
+    public ResponseEntity<?> getUser(@PathVariable Long userId) {
+        Optional<User> user = this.userRepository.findById(userId);
+        if (!user.isPresent()) {
+            ResponseEntity<String> errorResponseEntity =
+                    new ResponseEntity<String>("{\"error\": \"could not find user\"}", HttpStatus.NOT_FOUND);
+
+            return errorResponseEntity;
+        }
+        return new ResponseEntity<User>(this.userRepository.findOne(userId), HttpStatus.FOUND);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -48,12 +72,5 @@ public class UserController {
             }
         });
         return resultList;
-    }
-}
-
-@ResponseStatus(HttpStatus.NOT_FOUND)
-class UserNotFoundException extends RuntimeException {
-    public UserNotFoundException(Long userId) {
-        super("could not find user '" + userId + "'.");
     }
 }
