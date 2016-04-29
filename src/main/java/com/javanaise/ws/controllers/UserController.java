@@ -20,13 +20,13 @@ import java.util.function.Consumer;
  */
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "/sign_up", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/sign_up", method = RequestMethod.POST)
     public ResponseEntity<?> signUp(@RequestBody Map<String, String> params) {
         Optional<User> oUser = this.userRepository.findByEmail(params.get("email"));
         if (!oUser.isPresent()) {
@@ -40,7 +40,7 @@ public class UserController {
         return errorResponseEntity;
     }
 
-    @RequestMapping(value = "/sign_in", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/sign_in", method = RequestMethod.POST)
     public ResponseEntity<?> signIn(@RequestBody Map<String, String> params) {
         ResponseEntity<String> errorResponseEntity =
                 new ResponseEntity<String>("{\"status\": \"ahahah t'as cru que c'était possible\"}", HttpStatus.BAD_REQUEST);

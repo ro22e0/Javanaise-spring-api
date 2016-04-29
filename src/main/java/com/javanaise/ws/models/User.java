@@ -25,11 +25,24 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String username;
 
     @Column(nullable = false)
     private String password;
+
+    public User(String email, String password) {
+        this.setEmail(email);
+        this.setPassword(password);
+    }
+
+    public User(String firstname, String lastname, String email, String password) {
+        this.setFirstname(firstname);
+        this.setLastname(lastname);
+        this.setEmail(email);
+        this.setPassword(password);
+    }
+
+    User() { // jpa only
+    }
 
     public Long getId() { return id; }
 
@@ -57,34 +70,11 @@ public class User {
         this.email = email;
     }
 
-    public String getUsername(){
-        return this.username;
-    }
-
-    public  void setUsername(String username){
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public User(String email, String password) {
-        this.setEmail(email);
-        this.setPassword(password);
-    }
-
-    public User(String firstname, String lastname, String email, String password) {
-        this.setFirstname(firstname);
-        this.setLastname(lastname);
-        this.setEmail(email);
-        this.setPassword(password);
-    }
-
-    User() { // jpa only
     }
 }
