@@ -1,6 +1,9 @@
 package com.javanaise.ws.models;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Feed {
@@ -13,11 +16,20 @@ public class Feed {
     @Column
     private String title;
 
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column
+    private String author;
+
     @Column(nullable = false)
     private String link;
 
     @Column
-    private String description;
+    private String uri;
+
+    @Column
+    private String imageUrl;
 
     @Column
     private String language;
@@ -26,10 +38,13 @@ public class Feed {
     private String copyright;
 
     @Column
-    private String docs;
+    private Date pubDate;
 
     @Column
-    private String category;
+    private Date lastBuildDate;
+
+    @Column
+    private String docs;
 
     @Column
     private String managingEditor;
@@ -37,55 +52,89 @@ public class Feed {
     @Column
     private String webMaster;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "article")
-//    private Set<Article> items = new HashSet<>();
+    @Column
+    private String category;
 
-    public Feed(String link) {
-        this.setLink(link);
+    @Column
+    private String generator;
+
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "feed")
+//    private Set<UserFeed> userFeeds = new HashSet<UserFeed>();
+
+    @OneToMany(mappedBy = "feed")
+    private Set<Item> items = new HashSet<>();
+
+    public Feed(String title, String link, String description, String language, String copyright, Date pubDate) {
+        this.title = title;
+        this.link = link;
+        this.description = description;
+        this.language = language;
+        this.copyright = copyright;
+        this.pubDate = pubDate;
     }
 
     Feed() { // jpa only
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getDescription() {
+        return description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getLink() {
         return link;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public String getUri() {
+        return uri;
     }
 
-    public String getDescription() {
-        return description;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getCopyright() {
         return copyright;
     }
 
-    public void setCopyright(String copyright) {
-        this.copyright = copyright;
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public Date getLastBuildDate() {
+        return lastBuildDate;
+    }
+
+    public void setLastBuildDate(Date lastBuildDate) {
+        this.lastBuildDate = lastBuildDate;
     }
 
     public String getDocs() {
@@ -94,14 +143,6 @@ public class Feed {
 
     public void setDocs(String docs) {
         this.docs = docs;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getManagingEditor() {
@@ -118,6 +159,30 @@ public class Feed {
 
     public void setWebMaster(String webMaster) {
         this.webMaster = webMaster;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getGenerator() {
+        return generator;
+    }
+
+    public void setGenerator(String generator) {
+        this.generator = generator;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void addItem(Item item) {
+        this.items.add(item);
     }
 
 //    public Set<Article> getItems() {

@@ -29,6 +29,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "user")
+//    private Set<UserFeed> userFeeds = new HashSet<UserFeed>();
+
     public User(String email, String password) {
         this.setEmail(email);
         this.setPassword(password);

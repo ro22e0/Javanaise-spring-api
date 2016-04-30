@@ -79,7 +79,7 @@ public class UserController {
 
             return errorResponseEntity;
         }
-        return new ResponseEntity<User>(this.userRepository.findOne(userId), HttpStatus.FOUND);
+        return new ResponseEntity<User>(user.get(), HttpStatus.FOUND);
     }
 
     @RequestMapping(method = RequestMethod.GET)
