@@ -87,7 +87,8 @@ public class FeedController {
         myFeed.setDocs(feed.getDocs());
         myFeed.setManagingEditor(feed.getManagingEditor());
         myFeed.setGenerator(feed.getGenerator());
-        myFeed.setImageUrl(feed.getImage().getUrl());
+        if (feed.getImage() != null)
+            myFeed.setImageUrl(feed.getImage().getUrl());
         myFeed.setUri(feed.getUri());
         myFeed.setAuthor(feed.getAuthor());
         if (!feed.getCategories().isEmpty())
@@ -98,7 +99,8 @@ public class FeedController {
             SyndEntry entry = i.next();
             Item item = new Item(myFeed, entry.getLink());
             item.setUri(entry.getUri());
-            item.setDescription(entry.getDescription().getValue());
+            if (entry.getDescription() != null)
+                item.setDescription(entry.getDescription().getValue());
             item.setPubDate(entry.getPublishedDate());
             item.setTitle(entry.getTitle());
             item.setAuthor(entry.getAuthor());
