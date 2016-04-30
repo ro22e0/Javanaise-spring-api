@@ -2,8 +2,12 @@ package com.javanaise.ws.controllers;
 
 import com.javanaise.ws.models.Feed;
 import com.javanaise.ws.models.Item;
+import com.javanaise.ws.models.User;
+import com.javanaise.ws.models.UserFeed;
 import com.javanaise.ws.repositories.FeedRepository;
 import com.javanaise.ws.repositories.ItemRepository;
+import com.javanaise.ws.repositories.UserFeedRepository;
+import com.javanaise.ws.repositories.UserRepository;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
@@ -15,26 +19,34 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value = "/feeds", produces = MediaType.APPLICATION_JSON_VALUE)
 public class FeedController {
 
     @Autowired
+    UserRepository userRepository;
+    @Autowired
     private FeedRepository feedRepository;
-
     @Autowired
     private ItemRepository itemRepository;
+    @Autowired
+    private UserFeedRepository userFeedRepository;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody Map<String, String> params) {
+    public ResponseEntity<?> create(HttpServletRequest request, @RequestBody Map<String, String> params) {
+
+        HttpSession session = request.getSession(false);
+        if (session == null)
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+        User user = (User) session.getAttribute("user");
 
         URL feedUrl = null;
         try {
@@ -59,7 +71,17 @@ public class FeedController {
             return errorResponseEntity;
         }
 
-        System.out.println(feed.getEntries().get(0).getLink());
+        UserFeed userFeed = new UserFeed();
+        userFeed.setUser(user);
+
+        Optional<Feed> oFeed = feedRepository.findByLink(feed.getLink());
+        if (oFeed.isPresent()) {
+            userFeed.setFeed(oFeed.get());
+
+            userRepository.save(user);
+            userFeedRepository.save(userFeed);
+            return new ResponseEntity<Feed>(feedRepository.save(oFeed.get()), HttpStatus.CREATED);
+        }
 
         Feed myFeed = new Feed(feed.getTitle(), feed.getLink(), feed.getDescription(), feed.getLanguage(), feed.getCopyright(), feed.getPublishedDate());
         myFeed.setDocs(feed.getDocs());
@@ -87,11 +109,20 @@ public class FeedController {
             this.itemRepository.save(item);
             myFeed.addItem(item);
         }
+
+        userFeed.setFeed(myFeed);
+
+        userRepository.save(user);
+        userFeedRepository.save(userFeed);
         return new ResponseEntity<Feed>(feedRepository.save(myFeed), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/{feedId}", method = RequestMethod.GET)
-    public ResponseEntity<?> getFeed(@PathVariable Long feedId) {
+    public ResponseEntity<?> getFeed(HttpServletRequest request, @PathVariable Long feedId) {
+        HttpSession session = request.getSession(false);
+        if (session == null)
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+
         Optional<Feed> feed = this.feedRepository.findById(feedId);
         if (!feed.isPresent()) {
             ResponseEntity<String> errorResponseEntity =
@@ -103,7 +134,11 @@ public class FeedController {
     }
 
     @RequestMapping(value = "/{feedId}/items", method = RequestMethod.GET)
-    public ResponseEntity<?> getItems(@PathVariable Long feedId) {
+    public ResponseEntity<?> getItems(HttpServletRequest request, @PathVariable Long feedId) {
+        HttpSession session = request.getSession(false);
+        if (session == null)
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+
         Optional<Feed> feed = this.feedRepository.findById(feedId);
         if (!feed.isPresent()) {
             ResponseEntity<String> errorResponseEntity =
@@ -112,5 +147,23 @@ public class FeedController {
             return errorResponseEntity;
         }
         return new ResponseEntity<Collection<Item>>(this.itemRepository.findByFeedId(feedId), HttpStatus.FOUND);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> findAll(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null)
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+
+        final List<Feed> resultList = new ArrayList<>();
+        final Iterable<Feed> all = this.feedRepository.findAll();
+
+        all.forEach(new Consumer<Feed>() {
+            @Override
+            public void accept(Feed feed) {
+                resultList.add(feed);
+            }
+        });
+        return new ResponseEntity<List<Feed>>(resultList, HttpStatus.FOUND);
     }
 }

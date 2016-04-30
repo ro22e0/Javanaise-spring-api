@@ -1,5 +1,7 @@
 package com.javanaise.ws.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -58,10 +60,11 @@ public class Feed {
     @Column
     private String generator;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "feed")
-//    private Set<UserFeed> userFeeds = new HashSet<UserFeed>();
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "feed", cascade = CascadeType.ALL)
+    private Set<UserFeed> userFeeds = new HashSet<UserFeed>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "feed")
     private Set<Item> items = new HashSet<>();
 
@@ -185,7 +188,16 @@ public class Feed {
         this.items.add(item);
     }
 
-//    public Set<Article> getItems() {
-//        return items;
-//    }
+
+    public Set<UserFeed> getUserFeeds() {
+        return userFeeds;
+    }
+
+    public void addUserFeed(UserFeed userFeed) {
+        this.userFeeds.add(userFeed);
+    }
+
+    public void removeUserFeed(UserFeed userFeed) {
+        this.getUserFeeds().remove(userFeed);
+    }
 }

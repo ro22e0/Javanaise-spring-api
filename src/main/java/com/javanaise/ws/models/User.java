@@ -3,6 +3,8 @@ package com.javanaise.ws.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by ro22e0 on 26/04/2016.
@@ -29,9 +31,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "user")
-//    private Set<UserFeed> userFeeds = new HashSet<UserFeed>();
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<UserFeed> userFeeds = new HashSet<UserFeed>();
 
     public User(String email, String password) {
         this.setEmail(email);
@@ -82,5 +84,17 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<UserFeed> getUserFeeds() {
+        return userFeeds;
+    }
+
+    public void addUserFeed(UserFeed userFeed) {
+        this.getUserFeeds().add(userFeed);
+    }
+
+    public void removeUserFeed(UserFeed userFeed) {
+        this.getUserFeeds().remove(userFeed);
     }
 }

@@ -32,6 +32,12 @@ public class UserController {
         Optional<User> oUser = this.userRepository.findByEmail(params.get("email"));
         if (!oUser.isPresent()) {
             User user = new User(params.get("email"), params.get("password"));
+            if (params.get("firstname") != "") {
+                user.setEmail(params.get("firstname"));
+            }
+            if (params.get("lastname") != "") {
+                user.setEmail(params.get("lastname"));
+            }
             return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
         }
         ResponseEntity<String> errorResponseEntity =
@@ -45,17 +51,17 @@ public class UserController {
         Optional<User> user = this.userRepository.findByEmail(params.get("email"));
         if (!user.isPresent()) {
             session.invalidate();
-            return new ResponseEntity<String>("{\"status\": \"user not found\"}", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>("{\"error\": \"invalid email or password\"}", HttpStatus.NOT_FOUND);
         }
         if (user.get().getPassword().equals(params.get("password"))) {
             session.setAttribute("user", user.get());
             return new ResponseEntity<User>(user.get(), HttpStatus.OK);
         }
         session.invalidate();
-        return new ResponseEntity<String>("{\"status\": \"invalid email or password\"}", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<String>("{\"error\": \"invalid email or password\"}", HttpStatus.BAD_REQUEST);
     }
 
-    @RequestMapping(value = "/sign_out", method = RequestMethod.POST)
+    @RequestMapping(value = "/sign_out", method = RequestMethod.DELETE)
     public ResponseEntity<?> signOut(HttpSession session) {
         session.invalidate();
         return new ResponseEntity<String>("{\"status\": \"sucessful\"}", HttpStatus.OK);
@@ -63,7 +69,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> update(HttpServletRequest request, @RequestBody Map<String, String> params) {
-
         HttpSession session = request.getSession(false);
         if (session == null) {
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
@@ -86,7 +91,6 @@ public class UserController {
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public ResponseEntity<?> getUser(HttpServletRequest request, @PathVariable Long userId) {
-
         HttpSession session = request.getSession(false);
         if (session == null) {
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
@@ -104,7 +108,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> findAll(HttpServletRequest request) {
-
         HttpSession session = request.getSession(false);
         if (session == null) {
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
@@ -120,5 +123,22 @@ public class UserController {
             }
         });
         return new ResponseEntity<List<User>>(resultList, HttpStatus.FOUND);
+    }
+
+    @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteUser(HttpServletRequest request, @PathVariable Long userId) {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+        }
+
+        User user = (User) session.getAttribute("user");
+        if (user.getId() != userId) {
+            return new ResponseEntity<String>("{\"error\": \"unauthorized\"}", HttpStatus.UNAUTHORIZED);
+        }
+        userRepository.deleteById(userId);
+        userRepository.flush();
+        session.invalidate();
+        return new ResponseEntity<String>("{\"status\": \"complete\"}", HttpStatus.OK);
     }
 }
