@@ -1,7 +1,7 @@
 ServerRSS
 =========
 
-ServerRSS is an application server made in Java (J2EE, 1.8.0_92).
+ServerRSS is an application server made in Java with Spring Framework using J2EE and Java Sdk 1.8.0_92.
 
 Table of Contents
 =================
