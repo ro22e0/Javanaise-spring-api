@@ -22,7 +22,9 @@ public class ApiController {
                         "Mapped \"[/users/{userId}], methods=[GET], produces=[application/json]\"\n" +
                         "Mapped \"[/users],methods=[GET], produces=[application/json]\"\n" +
                         "Mapped \"[/users],methods=[PUT], produces=[application/json], body_param=[firstname, lastname, email, password]\"\n" +
-                        "Mapped \"[/feeds/create], methods=[POST], produces=[application/json], body_param=[url]\"", HttpStatus.OK);
+                        "Mapped \"[/feeds/create], methods=[POST], produces=[application/json], body_param=[url]\"" +
+                        "Mapped \"{[/feeds/{feedId}],methods=[GET],produces=[application/json]}\"\n" +
+                        "Mapped \"{[/feeds/{feedId}/items],methods=[GET],produces=[application/json]}\"", HttpStatus.OK);
         return errorResponseEntity;
     }
 }
