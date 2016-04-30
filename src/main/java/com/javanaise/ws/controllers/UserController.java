@@ -33,10 +33,10 @@ public class UserController {
         if (!oUser.isPresent()) {
             User user = new User(params.get("email"), params.get("password"));
             if (params.get("firstname") != "") {
-                user.setEmail(params.get("firstname"));
+                user.setFirstname(params.get("firstname"));
             }
             if (params.get("lastname") != "") {
-                user.setEmail(params.get("lastname"));
+                user.setLastname(params.get("lastname"));
             }
             return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
         }
