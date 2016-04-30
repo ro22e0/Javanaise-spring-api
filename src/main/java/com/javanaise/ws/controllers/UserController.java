@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +42,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST)
-    public ResponseEntity<?> signIn(@RequestBody Map<String, String> params) {
+    public ResponseEntity<?> signIn(HttpServletRequest request, @RequestBody Map<String, String> params, HttpSession session) {
+        System.out.println(session.getId());
         ResponseEntity<String> errorResponseEntity =
                 new ResponseEntity<String>("{\"status\": \"ahahah t'as cru que c'était possible\"}", HttpStatus.BAD_REQUEST);
 
