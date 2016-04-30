@@ -34,7 +34,6 @@ public class UserController {
             User user = new User(params.get("email"), params.get("password"));
             return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
         }
-
         ResponseEntity<String> errorResponseEntity =
                 new ResponseEntity<String>("{\"error\": \"user already exist\"}", HttpStatus.BAD_REQUEST);
 
@@ -43,38 +42,56 @@ public class UserController {
 
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST)
     public ResponseEntity<?> signIn(HttpServletRequest request, @RequestBody Map<String, String> params, HttpSession session) {
-        System.out.println(session.getId());
-        ResponseEntity<String> errorResponseEntity =
-                new ResponseEntity<String>("{\"status\": \"ahahah t'as cru que c'était possible\"}", HttpStatus.BAD_REQUEST);
+        Optional<User> user = this.userRepository.findByEmail(params.get("email"));
+        if (!user.isPresent()) {
+            session.invalidate();
+            return new ResponseEntity<String>("{\"status\": \"user not found\"}", HttpStatus.NOT_FOUND);
+        }
+        if (user.get().getPassword().equals(params.get("password"))) {
+            session.setAttribute("user", user.get());
+            return new ResponseEntity<User>(user.get(), HttpStatus.OK);
+        }
+        session.invalidate();
+        return new ResponseEntity<String>("{\"status\": \"invalid email or password\"}", HttpStatus.BAD_REQUEST);
+    }
 
-        return errorResponseEntity;
+    @RequestMapping(value = "/sign_out", method = RequestMethod.POST)
+    public ResponseEntity<?> signOut(HttpSession session) {
+        session.invalidate();
+        return new ResponseEntity<String>("{\"status\": \"sucessful\"}", HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@RequestBody Map<String, String> params) {
-        Optional<User> user = this.userRepository.findById(Long.getLong(params.get("id")));
-        if (!user.isPresent()) {
-            ResponseEntity<String> errorResponseEntity =
-                    new ResponseEntity<String>("{\"error\": \"could not find user\"}", HttpStatus.NOT_FOUND);
-            return errorResponseEntity;
+    public ResponseEntity<?> update(HttpServletRequest request, @RequestBody Map<String, String> params) {
+
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
         }
+        User user = (User) session.getAttribute("user");
         if (params.get("email") != "") {
-            user.get().setEmail(params.get("email"));
+            user.setEmail(params.get("email"));
         }
         if (params.get("password") != "") {
-            user.get().setEmail(params.get("password"));
+            user.setEmail(params.get("password"));
         }
         if (params.get("firstname") != "") {
-            user.get().setEmail(params.get("firstname"));
+            user.setEmail(params.get("firstname"));
         }
         if (params.get("lastname") != "") {
-            user.get().setEmail(params.get("lastname"));
+            user.setEmail(params.get("lastname"));
         }
-        return new ResponseEntity<User>(userRepository.save(user.get()), HttpStatus.OK);
+        return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUser(@PathVariable Long userId) {
+    public ResponseEntity<?> getUser(HttpServletRequest request, @PathVariable Long userId) {
+
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+        }
+
         Optional<User> user = this.userRepository.findById(userId);
         if (!user.isPresent()) {
             ResponseEntity<String> errorResponseEntity =
@@ -86,7 +103,13 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> findAll() {
+    public ResponseEntity<?> findAll(HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+        }
+
         final List<User> resultList = new ArrayList<>();
         final Iterable<User> all = this.userRepository.findAll();
 
@@ -96,6 +119,6 @@ public class UserController {
                 resultList.add(user);
             }
         });
-        return resultList;
+        return new ResponseEntity<List<User>>(resultList, HttpStatus.FOUND);
     }
 }

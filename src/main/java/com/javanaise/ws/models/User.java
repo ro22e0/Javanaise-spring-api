@@ -48,7 +48,9 @@ public class User {
     User() { // jpa only
     }
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
     public String getFirstname() {
         return firstname;
