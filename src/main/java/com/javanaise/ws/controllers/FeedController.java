@@ -141,7 +141,7 @@ public class FeedController {
 
             return errorResponseEntity;
         }
-        return new ResponseEntity<Feed>(feed.get(), HttpStatus.FOUND);
+        return new ResponseEntity<Feed>(feed.get(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{feedId}/items", method = RequestMethod.GET)
@@ -159,7 +159,7 @@ public class FeedController {
         }
         HashMap<String, Collection<Item>> response = new HashMap<>();
         response.put("items", this.itemRepository.findByFeedId(feedId));
-        return new ResponseEntity<HashMap<String, Collection<Item>>>(response, HttpStatus.FOUND);
+        return new ResponseEntity<HashMap<String, Collection<Item>>>(response, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -177,7 +177,7 @@ public class FeedController {
                 resultList.add(feed);
             }
         });
-        return new ResponseEntity<List<Feed>>(resultList, HttpStatus.FOUND);
+        return new ResponseEntity<List<Feed>>(resultList, HttpStatus.OK);
     }
 
     @PostConstruct

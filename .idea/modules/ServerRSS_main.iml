@@ -71,5 +71,6 @@
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.5" level="project" />
     <orderEntry type="library" name="rome-1.5.1" level="project" />
     <orderEntry type="library" name="jdom2-2.0.6" level="project" />
+    <orderEntry type="library" name="spring-security-crypto-4.0.4.RELEASE" level="project" />
   </component>
 </module>

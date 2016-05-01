@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,8 @@ public class UserController {
     public ResponseEntity<?> signUp(@RequestBody Map<String, String> params) {
         Optional<User> oUser = this.userRepository.findByEmail(params.get("email"));
         if (!oUser.isPresent()) {
-            User user = new User(params.get("email"), params.get("password"));
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            User user = new User(params.get("email"), encoder.encode(params.get("password")));
             if (params.get("firstname") != "") {
                 user.setFirstname(params.get("firstname"));
             }
@@ -51,7 +53,8 @@ public class UserController {
             session.invalidate();
             return new ResponseEntity<String>("{\"error\": \"invalid email or password\"}", HttpStatus.NOT_FOUND);
         }
-        if (user.get().getPassword().equals(params.get("password"))) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (encoder.matches(params.get("password"), user.get().getPassword())) {
             session.setAttribute("user", user.get());
             session.setMaxInactiveInterval(2629746);
             return new ResponseEntity<User>(user.get(), HttpStatus.OK);
@@ -77,13 +80,14 @@ public class UserController {
             user.setEmail(params.get("email"));
         }
         if (params.get("password") != "") {
-            user.setEmail(params.get("password"));
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            user.setPassword(encoder.encode(params.get("password")));
         }
         if (params.get("firstname") != "") {
-            user.setEmail(params.get("firstname"));
+            user.setFirstname(params.get("firstname"));
         }
         if (params.get("lastname") != "") {
-            user.setEmail(params.get("lastname"));
+            user.setLastname(params.get("lastname"));
         }
         return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
     }
@@ -99,7 +103,7 @@ public class UserController {
         if (!user.isPresent()) {
             return new ResponseEntity<String>("{\"error\": \"could not find user\"}", HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<User>(user.get(), HttpStatus.FOUND);
+        return new ResponseEntity<User>(user.get(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -118,7 +122,7 @@ public class UserController {
                 resultList.add(user);
             }
         });
-        return new ResponseEntity<List<User>>(resultList, HttpStatus.FOUND);
+        return new ResponseEntity<List<User>>(resultList, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
