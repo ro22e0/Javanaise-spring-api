@@ -80,13 +80,13 @@ public class UserFeedController {
         return new ResponseEntity<Feed>(feedRepository.save(feed.get()), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/unsubscribe", method = RequestMethod.DELETE)
-    public ResponseEntity<?> unsubscribe(HttpServletRequest request, @RequestBody Map<String, String> params) {
+    @RequestMapping(value = "/{feedId}/unsubscribe", method = RequestMethod.DELETE)
+    public ResponseEntity<?> unsubscribe(HttpServletRequest request, @PathVariable Long feedId) {
         HttpSession session = request.getSession(false);
         if (session == null)
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
 
-        Optional<Feed> feed = feedRepository.findById(Long.valueOf(params.get("id")));
+        Optional<Feed> feed = feedRepository.findById(Long.valueOf(feedId));
         if (!feed.isPresent())
             return new ResponseEntity<String>("{\"error\": \"Feed not found.\"}", HttpStatus.NOT_FOUND);
 
