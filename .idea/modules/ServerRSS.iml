@@ -10,6 +10,5 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="rome-1.5.1" level="project" />
     <orderEntry type="library" name="jdom2-2.0.6" level="project" />
-    <orderEntry type="library" name="spring-security-oauth2-2.0.9.RELEASE" level="project" />
   </component>
 </module>
