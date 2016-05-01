@@ -10,10 +10,12 @@ import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -28,6 +30,7 @@ import java.util.Optional;
 
 @Component
 @EnableAsync
+@Transactional
 public class FeedUpdaterTask {
 
     @Autowired
@@ -46,6 +49,8 @@ public class FeedUpdaterTask {
     }
 
     @Async
+    @Modifying
+    @Transactional
     synchronized private void updateFeed(Feed feed) {
         URL feedUrl = null;
         try {
