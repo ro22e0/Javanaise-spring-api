@@ -37,11 +37,11 @@ public class FeedController {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    private FeedRepository feedRepository;
+    FeedRepository feedRepository;
     @Autowired
-    private ItemRepository itemRepository;
+    ItemRepository itemRepository;
     @Autowired
-    private UserFeedRepository userFeedRepository;
+    UserFeedRepository userFeedRepository;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(HttpServletRequest request, @RequestBody Map<String, String> params) {
