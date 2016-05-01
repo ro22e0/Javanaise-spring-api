@@ -57,3 +57,5 @@ docker run --name javanaise --link mysqldb:mysql -p 8443:8080 -d ro22e0/javanais
 ~~~
 
 You can modify the bind port on the local machine like `8082:8080`, `5445:8080`, etc.
+
+Remove the `-d` option if you don't want it to run in background.
