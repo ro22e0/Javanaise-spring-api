@@ -1,0 +1,14 @@
+demo-mysql:
+  image: mysql:latest
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=rssflux
+    - MYSQL_USER=javanaise
+    - MYSQL_PASSWORD=javanaise
+
+javanaise:
+  image: ro22e0/javanaise
+  links:
+    - demo-mysql:mysql
+  ports:
+    - 8443:8080

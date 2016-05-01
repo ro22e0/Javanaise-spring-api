@@ -185,20 +185,20 @@ public class FeedController {
 
     @PostConstruct
     private void setFeeds() {
-        addFeed("http://rss.lefigaro.fr/lefigaro/laune");
-        addFeed("http://www.jeuxvideo.com/rss/rss.xml");
-        addFeed("http://www.20minutes.fr/rss/france.xml");
-        addFeed("http://www.lemonde.fr/rss/une.xml");
-        addFeed("http://www.rue89.com/homepage/feed");
-        addFeed("http://www.monde-diplomatique.fr/recents.xml");
-        addFeed("http://www.clubic.com/xml/news.xml");
-        addFeed("http://www.journaldugeek.com/rss.php");
-        addFeed("http://rss.macg.co/");
-        addFeed("http://www.pcinpact.com/include/news.xml");
-        addFeed("http://www.ubergizmo.com/fr/index.xml");
-        addFeed("http://www.presse-citron.net/feed/");
-        addFeed("https://www.apple.com/main/rss/hotnews/hotnews.rss");
-        addFeed("http://rss.cnn.com/rss/edition.rss");
+//        addFeed("http://rss.lefigaro.fr/lefigaro/laune");
+//        addFeed("http://www.jeuxvideo.com/rss/rss.xml");
+//        addFeed("http://www.20minutes.fr/rss/france.xml");
+//        addFeed("http://www.lemonde.fr/rss/une.xml");
+//        addFeed("http://www.rue89.com/homepage/feed");
+//        addFeed("http://www.monde-diplomatique.fr/recents.xml");
+//        addFeed("http://www.clubic.com/xml/news.xml");
+//        addFeed("http://www.journaldugeek.com/rss.php");
+//        addFeed("http://rss.macg.co/");
+//        addFeed("http://www.pcinpact.com/include/news.xml");
+//        addFeed("http://www.ubergizmo.com/fr/index.xml");
+//        addFeed("http://www.presse-citron.net/feed/");
+//        addFeed("https://www.apple.com/main/rss/hotnews/hotnews.rss");
+//        addFeed("http://rss.cnn.com/rss/edition.rss");
     }
 
     @Async

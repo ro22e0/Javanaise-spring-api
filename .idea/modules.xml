@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServerRSS.iml" filepath="$PROJECT_DIR$/.idea/modules/ServerRSS.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServerRSS_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServerRSS_main.iml" group="ServerRSS" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServerRSS_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ServerRSS_test.iml" group="ServerRSS" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javanaise.iml" filepath="$PROJECT_DIR$/.idea/modules/javanaise.iml" />
     </modules>
   </component>
 </project>
