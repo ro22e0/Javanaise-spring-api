@@ -45,7 +45,6 @@ Using Docker
 Running inside docker container linked with MySQL container
 
 Run MySQL 5.6 in Docker container :
-
 ~~~
 docker run --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rssflux -e MYSQL_USER=javanaise -e MYSQL_PASSWORD=javanaise -d mysql
 ~~~
@@ -53,7 +52,8 @@ docker run --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rssflux 
 You can modify the value of `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, ` MYSQL_USER`, `MYSQL_PASSWORD`
 
 Run the rss server in Docker container and link it to mysqldb :
-
 ~~~
 docker run --name javanaise --link mysqldb:mysql -p 8443:8080 -d ro22e0/javanaise
 ~~~
+
+You can modify the bind port on the local machine like `8082:8080`, `5445:8080`, etc.
