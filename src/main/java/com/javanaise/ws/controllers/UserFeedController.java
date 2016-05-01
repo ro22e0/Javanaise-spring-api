@@ -51,7 +51,9 @@ public class UserFeedController {
                 resultList.add(userFeed.getFeed());
             }
         });
-        return new ResponseEntity<List<Feed>>(resultList, HttpStatus.OK);
+        HashMap<String, List<Feed>> response = new HashMap<>();
+        response.put("feeds", resultList);
+        return new ResponseEntity<HashMap<String, List<Feed>>>(response, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/subscribe", method = RequestMethod.POST)

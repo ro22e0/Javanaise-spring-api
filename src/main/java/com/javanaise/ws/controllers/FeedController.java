@@ -92,6 +92,7 @@ public class FeedController {
 
         Feed myFeed = new Feed(feed.getTitle(), feed.getLink(), feed.getDescription(), feed.getLanguage(), feed.getCopyright(), feed.getPublishedDate());
         myFeed.setDocs(feed.getDocs());
+        myFeed.setSourceLink(params.get("url"));
         myFeed.setManagingEditor(feed.getManagingEditor());
         myFeed.setGenerator(feed.getGenerator());
         if (feed.getImage() != null)
@@ -177,13 +178,27 @@ public class FeedController {
                 resultList.add(feed);
             }
         });
-        return new ResponseEntity<List<Feed>>(resultList, HttpStatus.OK);
+        HashMap<String, List<Feed>> response = new HashMap<>();
+        response.put("feeds", resultList);
+        return new ResponseEntity<HashMap<String, List<Feed>>>(response, HttpStatus.OK);
     }
 
     @PostConstruct
     private void setFeeds() {
         addFeed("http://rss.lefigaro.fr/lefigaro/laune");
         addFeed("http://www.jeuxvideo.com/rss/rss.xml");
+        addFeed("http://www.20minutes.fr/rss/france.xml");
+        addFeed("http://www.lemonde.fr/rss/une.xml");
+        addFeed("http://www.rue89.com/homepage/feed");
+        addFeed("http://www.monde-diplomatique.fr/recents.xml");
+        addFeed("http://www.clubic.com/xml/news.xml");
+        addFeed("http://www.journaldugeek.com/rss.php");
+        addFeed("http://rss.macg.co/");
+        addFeed("http://www.pcinpact.com/include/news.xml");
+        addFeed("http://www.ubergizmo.com/fr/index.xml");
+        addFeed("http://www.presse-citron.net/feed/");
+        addFeed("https://www.apple.com/main/rss/hotnews/hotnews.rss");
+        addFeed("http://rss.cnn.com/rss/edition.rss");
     }
 
     @Async
@@ -192,7 +207,6 @@ public class FeedController {
         try {
             feedUrl = new URL(url);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
             return;
         }
 
@@ -201,10 +215,8 @@ public class FeedController {
         try {
             feed = input.build(new XmlReader(feedUrl));
         } catch (FeedException e) {
-            e.printStackTrace();
             return;
         } catch (IOException e) {
-            e.printStackTrace();
             return;
         }
 
@@ -215,6 +227,7 @@ public class FeedController {
 
         Feed myFeed = new Feed(feed.getTitle(), feed.getLink(), feed.getDescription(), feed.getLanguage(), feed.getCopyright(), feed.getPublishedDate());
         myFeed.setDocs(feed.getDocs());
+        myFeed.setSourceLink(url);
         myFeed.setManagingEditor(feed.getManagingEditor());
         myFeed.setGenerator(feed.getGenerator());
         if (feed.getImage() != null)

@@ -49,7 +49,7 @@ public class FeedUpdaterTask {
     synchronized private void updateFeed(Feed feed) {
         URL feedUrl = null;
         try {
-            feedUrl = new URL(feed.getLink());
+            feedUrl = new URL(feed.getSourceLink());
         } catch (MalformedURLException e) {
             e.printStackTrace();
             return;

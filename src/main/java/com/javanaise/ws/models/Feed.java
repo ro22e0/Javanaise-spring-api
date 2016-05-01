@@ -27,6 +27,10 @@ public class Feed {
     @Column(nullable = false)
     private String link;
 
+    @JsonIgnore
+    @Column
+    private String sourceLink;
+
     @Column
     private String uri;
 
@@ -198,5 +202,14 @@ public class Feed {
 
     public void removeUserFeed(UserFeed userFeed) {
         this.getUserFeeds().remove(userFeed);
+    }
+
+
+    public String getSourceLink() {
+        return sourceLink;
+    }
+
+    public void setSourceLink(String sourceLink) {
+        this.sourceLink = sourceLink;
     }
 }

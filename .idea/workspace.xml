@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="011d5fc0-956f-43ab-bf48-7f4824209759" name="Default" comment="Update HTTP responses">
+    <list default="true" id="011d5fc0-956f-43ab-bf48-7f4824209759" name="Default" comment="Update">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="ServerRSS.iws" />
@@ -89,7 +93,7 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1605">
+            <state relative-caret-position="1626">
               <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -101,21 +105,11 @@
       <file leaf-file-name="UserFeedController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+            <state relative-caret-position="246">
+              <caret line="55" column="88" selection-start-line="53" selection-start-column="8" selection-end-line="55" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BCryptPasswordEncoder.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-crypto/4.0.4.RELEASE/26da39c04b45b12cf4e6e31ee0406531c0187ee3/spring-security-crypto-4.0.4.RELEASE.jar!/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -152,42 +146,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-              <folding>
-                <element signature="e#687#695#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FeedController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2250">
-              <caret line="179" column="71" selection-start-line="179" selection-start-column="71" selection-end-line="179" selection-end-column="71" />
+            <state relative-caret-position="2295">
+              <caret line="182" column="88" selection-start-line="182" selection-start-column="88" selection-end-line="182" selection-end-column="88" />
               <folding>
-                <marker date="1462080051000" expanded="true" signature="1578:5371" placeholder="..." />
-                <marker date="1462080051000" expanded="true" signature="4262:5163" placeholder="{...}" />
+                <marker date="1462099154000" expanded="true" signature="1578:5420" placeholder="..." />
+                <marker date="1462099154000" expanded="true" signature="4311:5212" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <file leaf-file-name="FeedUpdaterTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            <state relative-caret-position="405">
+              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Feed.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="211" column="36" selection-start-line="211" selection-start-column="36" selection-end-line="211" selection-end-column="36" />
+              <folding>
+                <element signature="e#1208#1218#0" expanded="true" />
+                <element signature="e#3948#3949#0" expanded="true" />
+                <element signature="e#3981#3982#0" expanded="true" />
+                <element signature="e#4033#4034#0" expanded="true" />
+                <element signature="e#4077#4078#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -559,15 +567,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/repositories/UserFeedRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/repositories/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/ServerRssApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -988,6 +996,9 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
+      <method />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -1002,6 +1013,15 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GriffonRunConfigurationType" factoryName="Griffon">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="true" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
@@ -1099,6 +1119,28 @@
       <option name="workingDirectory" />
       <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1335,7 +1377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1462080139324</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="update application.properties">
+      <created>1462096696580</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1462096696580</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1349,9 +1398,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295053" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20619468" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24159291" sideWeight="0.6773163" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21327433" sideWeight="0.6773163" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18157615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18157615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22044729" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1397,7 +1446,9 @@
     <MESSAGE value="Fixed feeds issue" />
     <MESSAGE value="update properties" />
     <MESSAGE value="Update HTTP responses" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update HTTP responses" />
+    <MESSAGE value="update application.properties" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1504,9 +1555,9 @@
         <state relative-caret-position="135">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#1148#1158#0" expanded="true" />
-            <element signature="e#3798#3799#0" expanded="true" />
-            <element signature="e#3850#3851#0" expanded="true" />
+            <element signature="e#1208#1218#0" expanded="true" />
+            <element signature="e#3858#3859#0" expanded="true" />
+            <element signature="e#3910#3911#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1636,6 +1687,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1643,6 +1695,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
           <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1651,25 +1706,6 @@
         <state relative-caret-position="195">
           <caret line="13" column="19" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-887">
-          <caret line="42" column="16" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="16" />
-          <folding>
-            <element signature="e#1148#1158#0" expanded="true" />
-            <element signature="e#3798#3799#0" expanded="true" />
-            <element signature="e#3850#3851#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1715,37 +1751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="179" column="71" selection-start-line="179" selection-start-column="71" selection-end-line="179" selection-end-column="71" />
-          <folding>
-            <marker date="1462080051000" expanded="true" signature="1578:5371" placeholder="..." />
-            <marker date="1462080051000" expanded="true" signature="4262:5163" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/javanaise/ws/ServerRssApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1772,18 +1777,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="211" column="36" selection-start-line="211" selection-start-column="36" selection-end-line="211" selection-end-column="36" />
+          <folding>
+            <element signature="e#1208#1218#0" expanded="true" />
+            <element signature="e#3948#3949#0" expanded="true" />
+            <element signature="e#3981#3982#0" expanded="true" />
+            <element signature="e#4033#4034#0" expanded="true" />
+            <element signature="e#4077#4078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1626">
+          <caret line="124" column="71" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="55" column="88" selection-start-line="53" selection-start-column="8" selection-end-line="55" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="182" column="88" selection-start-line="182" selection-start-column="88" selection-end-line="182" selection-end-column="88" />
+          <folding>
+            <marker date="1462099154000" expanded="true" signature="1578:5420" placeholder="..." />
+            <marker date="1462099154000" expanded="true" signature="4311:5212" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
