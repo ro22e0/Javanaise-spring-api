@@ -29,6 +29,7 @@ import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value = "/feeds", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin
 public class FeedController {
 
     @Autowired

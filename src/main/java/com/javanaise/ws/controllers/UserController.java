@@ -22,6 +22,7 @@ import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -40,10 +41,7 @@ public class UserController {
             }
             return new ResponseEntity<User>(userRepository.save(user), HttpStatus.CREATED);
         }
-        ResponseEntity<String> errorResponseEntity =
-                new ResponseEntity<String>("{\"error\": \"user already exist\"}", HttpStatus.BAD_REQUEST);
-
-        return errorResponseEntity;
+        return new ResponseEntity<String>("{\"error\": \"user already exist\"}", HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/sign_in", method = RequestMethod.POST)
@@ -55,6 +53,7 @@ public class UserController {
         }
         if (user.get().getPassword().equals(params.get("password"))) {
             session.setAttribute("user", user.get());
+            session.setMaxInactiveInterval(2629746);
             return new ResponseEntity<User>(user.get(), HttpStatus.OK);
         }
         session.invalidate();
@@ -98,10 +97,7 @@ public class UserController {
 
         Optional<User> user = this.userRepository.findById(userId);
         if (!user.isPresent()) {
-            ResponseEntity<String> errorResponseEntity =
-                    new ResponseEntity<String>("{\"error\": \"could not find user\"}", HttpStatus.NOT_FOUND);
-
-            return errorResponseEntity;
+            return new ResponseEntity<String>("{\"error\": \"could not find user\"}", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<User>(user.get(), HttpStatus.FOUND);
     }

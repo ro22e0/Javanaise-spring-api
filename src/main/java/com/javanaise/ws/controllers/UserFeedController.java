@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,6 +23,7 @@ import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value = "/feeds", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "http://localhost:9000")
 public class UserFeedController {
 
     @Autowired
@@ -100,6 +98,6 @@ public class UserFeedController {
         user.removeUserFeed(userFeed.get());
         feed.get().removeUserFeed(userFeed.get());
         userRepository.save(user);
-        return new ResponseEntity<Feed>(feedRepository.save(feed.get()), HttpStatus.OK);
+        return new ResponseEntity<String>("{\"status\": \"Successful\"}", HttpStatus.OK);
     }
 }
