@@ -54,6 +54,8 @@ public class UserController {
         if (user.get().getPassword().equals(params.get("password"))) {
             session.setAttribute("user", user.get());
             session.setMaxInactiveInterval(2629746);
+
+            System.out.println(session.getId());
             return new ResponseEntity<User>(user.get(), HttpStatus.OK);
         }
         session.invalidate();

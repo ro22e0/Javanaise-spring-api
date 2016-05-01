@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="011d5fc0-956f-43ab-bf48-7f4824209759" name="Default" comment="update feed">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" />
+    <list default="true" id="011d5fc0-956f-43ab-bf48-7f4824209759" name="Default" comment="update feed worker">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/ServerRssApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/ServerRssApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" afterPath="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" />
     </list>
     <ignored path="ServerRSS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,8 +102,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
+            <state relative-caret-position="390">
+              <caret line="57" column="21" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FeedUpdaterTask.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FeedUpdaterTask.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="38" column="34" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="34" />
+            <state relative-caret-position="358">
+              <caret line="74" column="37" selection-start-line="72" selection-start-column="12" selection-end-line="74" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,14 +155,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FeedController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FeedController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-618">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
               <folding>
-                <marker date="1462061168000" expanded="true" signature="1483:4991" placeholder="..." />
-                <marker date="1462061168000" expanded="true" signature="4064:4781" placeholder="{...}" />
+                <marker date="1462066141000" expanded="true" signature="1483:5320" placeholder="..." />
+                <marker date="1462066141000" expanded="true" signature="4211:5112" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -175,7 +171,7 @@
       <file leaf-file-name="ApiController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-123">
+            <state relative-caret-position="150">
               <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
               <folding>
                 <element signature="e#687#695#0" expanded="true" />
@@ -197,12 +193,12 @@
       <file leaf-file-name="UserFeedController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="53" column="74" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
+            <state relative-caret-position="15">
+              <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1766#1767#0" expanded="true" />
-                <element signature="e#1832#1833#0" expanded="true" />
+                <element signature="e#1731#1732#0" expanded="true" />
+                <element signature="e#1797#1798#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -573,11 +569,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/repositories/UserFeedRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/repositories/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/ServerRssApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java" />
       </list>
     </option>
   </component>
@@ -1177,12 +1173,26 @@
       <option name="project" value="LOCAL" />
       <updated>1462055581712</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add feed update worker">
+      <created>1462065108106</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1462065108106</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update feed worker">
+      <created>1462065159766</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1462065159766</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1191,7 +1201,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295053" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20619468" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.339823" sideWeight="0.6773163" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.339823" sideWeight="0.6773163" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30937168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920355" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
@@ -1233,7 +1243,9 @@
     <MESSAGE value="Add suscribed feeds" />
     <MESSAGE value="update user" />
     <MESSAGE value="update feed" />
-    <option name="LAST_COMMIT_MESSAGE" value="update feed" />
+    <MESSAGE value="add feed update worker" />
+    <MESSAGE value="update feed worker" />
+    <option name="LAST_COMMIT_MESSAGE" value="update feed worker" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1298,7 +1310,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4218#4226#0" expanded="false" />
+            <element signature="e#4268#4276#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1574,16 +1586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-123">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="e#687#695#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/models/Feed.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="642">
@@ -1606,43 +1608,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/ApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="53" column="74" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
+        <state relative-caret-position="150">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#1832#1833#0" expanded="true" />
+            <element signature="e#687#695#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserFeedController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-618">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="15">
+          <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
           <folding>
-            <marker date="1462061168000" expanded="true" signature="1483:4991" placeholder="..." />
-            <marker date="1462061168000" expanded="true" signature="4064:4781" placeholder="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1731#1732#0" expanded="true" />
+            <element signature="e#1797#1798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="74" column="37" selection-start-line="72" selection-start-column="12" selection-end-line="74" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
+        <state relative-caret-position="390">
+          <caret line="57" column="21" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/FeedUpdaterTask.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/javanaise/ws/controllers/FeedController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="38" column="34" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="34" />
+        <state relative-caret-position="345">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1462066141000" expanded="true" signature="1483:5320" placeholder="..." />
+            <marker date="1462066141000" expanded="true" signature="4211:5112" placeholder="{...}" />
           </folding>
         </state>
       </provider>

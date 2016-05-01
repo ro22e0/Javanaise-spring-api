@@ -45,8 +45,12 @@ public class FeedController {
     public ResponseEntity<?> create(HttpServletRequest request, @RequestBody Map<String, String> params) {
 
         HttpSession session = request.getSession(false);
-        if (session == null)
+        if (session == null) {
+            System.out.println("weird");
+            System.out.println(session.getId());
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
+        }
+        System.out.println(session.getId());
         User user = (User) session.getAttribute("user");
 
         URL feedUrl = null;
@@ -98,23 +102,25 @@ public class FeedController {
 
         for (Iterator<SyndEntry> i = feed.getEntries().iterator(); i.hasNext(); ) {
             SyndEntry entry = i.next();
-            Item item = new Item(myFeed, entry.getLink());
-            item.setUri(entry.getUri());
-            if (entry.getDescription() != null)
-                item.setDescription(entry.getDescription().getValue());
-            item.setPubDate(entry.getPublishedDate());
-            item.setTitle(entry.getTitle());
-            item.setAuthor(entry.getAuthor());
-            item.setComments(entry.getComments());
-            item.setSource(myFeed.getLink());
-            if (!entry.getCategories().isEmpty())
-                item.setCategory(entry.getCategories().get(0).getName());
-            this.itemRepository.save(item);
-            myFeed.addItem(item);
+
+            Optional<Item> oItem = itemRepository.findByLink(entry.getLink());
+            if (!oItem.isPresent()) {
+                Item item = new Item(myFeed, entry.getLink());
+                item.setUri(entry.getUri());
+                if (entry.getDescription() != null)
+                    item.setDescription(entry.getDescription().getValue());
+                item.setPubDate(entry.getPublishedDate());
+                item.setTitle(entry.getTitle());
+                item.setAuthor(entry.getAuthor());
+                item.setComments(entry.getComments());
+                item.setSource(myFeed.getLink());
+                if (!entry.getCategories().isEmpty())
+                    item.setCategory(entry.getCategories().get(0).getName());
+                this.itemRepository.save(item);
+                myFeed.addItem(item);
+            }
         }
-
         userFeed.setFeed(myFeed);
-
         userRepository.save(user);
         userFeedRepository.save(userFeed);
         return new ResponseEntity<Feed>(feedRepository.save(myFeed), HttpStatus.CREATED);
