@@ -86,7 +86,7 @@ public class UserFeedController {
         if (session == null)
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
 
-        Optional<Feed> feed = feedRepository.findById(Long.valueOf(feedId));
+        Optional<Feed> feed = feedRepository.findById(feedId);
         if (!feed.isPresent())
             return new ResponseEntity<String>("{\"error\": \"Feed not found.\"}", HttpStatus.NOT_FOUND);
 
