@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 
 @RestController
 @RequestMapping(value = "/feeds", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "http://localhost:9000")
+@CrossOrigin
 public class UserFeedController {
 
     @Autowired
