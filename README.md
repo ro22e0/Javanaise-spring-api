@@ -39,3 +39,21 @@ REStApi
 =======
 
 We will use a REStApi to communicate between all our application. All the request to the web api will be at this address `localhost:8443`.
+
+Using Docker
+============
+Running inside docker container linked with MySQL container
+
+Run MySQL 5.6 in Docker container :
+
+~~~
+docker run --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rssflux -e MYSQL_USER=javanaise -e MYSQL_PASSWORD=javanaise -d mysql
+~~~
+
+You can modify the value of `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, ` MYSQL_USER`, `MYSQL_PASSWORD`
+
+Run rss server in docker container and link to mysqldb :
+
+~~~
+docker run --name javanaise --link mysqldb:mysql -p 8443:8080 -d ro22e0/javanaise
+~~~
