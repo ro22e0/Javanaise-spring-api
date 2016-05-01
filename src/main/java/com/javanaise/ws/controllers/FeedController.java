@@ -17,8 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -50,7 +52,7 @@ public class FeedController {
             System.out.println(session.getId());
             return new ResponseEntity<String>("{\"error\": \"Not connected.\"}", HttpStatus.UNAUTHORIZED);
         }
-        System.out.println(session.getId());
+
         User user = (User) session.getAttribute("user");
 
         URL feedUrl = null;
@@ -155,7 +157,9 @@ public class FeedController {
 
             return errorResponseEntity;
         }
-        return new ResponseEntity<Collection<Item>>(this.itemRepository.findByFeedId(feedId), HttpStatus.FOUND);
+        HashMap<String, Collection<Item>> response = new HashMap<>();
+        response.put("items", this.itemRepository.findByFeedId(feedId));
+        return new ResponseEntity<HashMap<String, Collection<Item>>>(response, HttpStatus.FOUND);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -174,5 +178,73 @@ public class FeedController {
             }
         });
         return new ResponseEntity<List<Feed>>(resultList, HttpStatus.FOUND);
+    }
+
+    @PostConstruct
+    private void setFeeds() {
+        addFeed("http://rss.lefigaro.fr/lefigaro/laune");
+        addFeed("http://www.jeuxvideo.com/rss/rss.xml");
+    }
+
+    @Async
+    synchronized private void addFeed(String url) {
+        URL feedUrl = null;
+        try {
+            feedUrl = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        SyndFeedInput input = new SyndFeedInput();
+        SyndFeed feed = null;
+        try {
+            feed = input.build(new XmlReader(feedUrl));
+        } catch (FeedException e) {
+            e.printStackTrace();
+            return;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Optional<Feed> oFeed = feedRepository.findByLink(feed.getLink());
+        if (oFeed.isPresent()) {
+            return;
+        }
+
+        Feed myFeed = new Feed(feed.getTitle(), feed.getLink(), feed.getDescription(), feed.getLanguage(), feed.getCopyright(), feed.getPublishedDate());
+        myFeed.setDocs(feed.getDocs());
+        myFeed.setManagingEditor(feed.getManagingEditor());
+        myFeed.setGenerator(feed.getGenerator());
+        if (feed.getImage() != null)
+            myFeed.setImageUrl(feed.getImage().getUrl());
+        myFeed.setUri(feed.getUri());
+        myFeed.setAuthor(feed.getAuthor());
+        if (!feed.getCategories().isEmpty())
+            myFeed.setCategory(feed.getCategories().get(0).getName());
+        myFeed = feedRepository.save(myFeed);
+
+        for (Iterator<SyndEntry> i = feed.getEntries().iterator(); i.hasNext(); ) {
+            SyndEntry entry = i.next();
+
+            Optional<Item> oItem = itemRepository.findByLink(entry.getLink());
+            if (!oItem.isPresent()) {
+                Item item = new Item(myFeed, entry.getLink());
+                item.setUri(entry.getUri());
+                if (entry.getDescription() != null)
+                    item.setDescription(entry.getDescription().getValue());
+                item.setPubDate(entry.getPublishedDate());
+                item.setTitle(entry.getTitle());
+                item.setAuthor(entry.getAuthor());
+                item.setComments(entry.getComments());
+                item.setSource(myFeed.getLink());
+                if (!entry.getCategories().isEmpty())
+                    item.setCategory(entry.getCategories().get(0).getName());
+                itemRepository.save(item);
+                myFeed.addItem(item);
+            }
+        }
+        feedRepository.save(myFeed);
     }
 }

@@ -188,7 +188,6 @@ public class Feed {
         this.items.add(item);
     }
 
-
     public Set<UserFeed> getUserFeeds() {
         return userFeeds;
     }
