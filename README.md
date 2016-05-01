@@ -52,7 +52,7 @@ docker run --name mysqldb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=rssflux 
 
 You can modify the value of `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, ` MYSQL_USER`, `MYSQL_PASSWORD`
 
-Run rss server in docker container and link to mysqldb :
+Run the rss server in Docker container and link it to mysqldb :
 
 ~~~
 docker run --name javanaise --link mysqldb:mysql -p 8443:8080 -d ro22e0/javanaise
