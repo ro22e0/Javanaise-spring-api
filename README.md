@@ -15,14 +15,16 @@ Table of Contents
 How to start the server
 =======================
 
-To start the server you need to have a MYSQL server installed in your host machine with this username and password "root"/"root".
+To start the server you need to have a MYSQL server installed in your host machine with this username and password "javanaise"/"javanaise".
 After the mysql-server installed with the good username and password, you will have to create a database "rssflux_dev".
-After all this steps done you can execute this command in a terminal `./gradlew bootrun` and connect at localhost:8443
 
-REStApi
+When all this steps done you can execute this command in a terminal `./gradlew bootrun` and connect at localhost:8080
+
+RestApi
 =======
 
-We will use a REStApi to communicate between all our application. All the request to the web api will be at this address `localhost:8443`.
+We will use a REStApi to communicate between all our applications.
+All the requests to the API are describe on the [wiki](https://github.com/ro22e0/Javanaise-spring-api/wiki).
 
 Data Model
 ==========
@@ -41,6 +43,14 @@ Les utilisateurs possèdent une liste de flux rss qui leurs sont associés et un
 
 Using Docker
 ============
+By clonning the repository
+
+Open a terminal and go into javanaise-spring-api/src/main/docker.
+
+Run `docker-compose up` to start and `docker-compose down`to stop.
+
+---
+
 Running inside docker container linked with MySQL container
 
 Run MySQL 5.6 in Docker container :
