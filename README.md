@@ -24,6 +24,20 @@ REStApi
 
 We will use a REStApi to communicate between all our application. All the request to the web api will be at this address `localhost:8443`.
 
+Data Model
+==========
+
+Le modèle de données que l'on va utilisé ressemblera à celui-ci ( des modifications peuvent opérées durant le process )
+
+| user      | feed        |
+| --------- | ----------- |
+| firstname | title       |
+| lastname  | description |
+| email     | link        |
+| password  | users       |
+| feeds     |
+
+Les utilisateurs possèdent une liste de flux rss qui leurs sont associés et un flux rss est lié à plusieurs utilisateurs.
 
 Using Docker
 ============
