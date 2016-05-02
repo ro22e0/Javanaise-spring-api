@@ -6,7 +6,7 @@ Javanaise is an application server (RestApi) made in Java with Spring Framework 
 Table of Contents
 =================
 
-  * [Javanaise](#Javanaise)
+  * [Javanaise](#javanaise)
   * [Table of Contents](#table-of-contents)
   * [How to start the server] (#how-to-start-the-server)
   * [Data Model](#data-model)
@@ -16,6 +16,7 @@ How to start the server
 =======================
 
 To start the server you need to have a MYSQL server installed in your host machine with this username and password "javanaise"/"javanaise".
+
 After the mysql-server installed with the good username and password, you will have to create a database "rssflux_dev".
 
 When all this steps done you can execute this command in a terminal `./gradlew bootrun` and connect at localhost:8080
