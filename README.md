@@ -10,7 +10,7 @@ Table of Contents
   * [Table of Contents](#table-of-contents)
   * [How to start the server] (#how-to-start-the-server)
   * [Data Model](#data-model)
-  * [REStApi](#restapi)
+  * [RestApi](#restapi)
 
 How to start the server
 =======================
@@ -24,7 +24,7 @@ When all this steps done you can execute this command in a terminal `./gradlew b
 RestApi
 =======
 
-We will use a REStApi to communicate between all our applications.
+We will use a RestApi to communicate between all our applications.
 All the requests to the API are describe on the [wiki](https://github.com/ro22e0/Javanaise-spring-api/wiki).
 
 Data Model
